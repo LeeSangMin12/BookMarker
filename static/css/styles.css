@@ -2992,6 +2992,7 @@ textarea.form-control-lg {
 }
 
 .btn {
+  margin-right: 20px;
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
