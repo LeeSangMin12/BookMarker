@@ -11286,3 +11286,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* 2022.03.08 kjh 추가 */
+  .textarea {
+    resize: none
+  }
+  .text-right{
+    float: right;
+  }
