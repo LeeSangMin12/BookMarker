@@ -1,16 +1,16 @@
 // $(document).ready(function () {
 //     listing();
 // });
-
+//
 // function listing() {
 //     $.ajax({
 //         type: 'GET',
 //         url: '/',
 //         data: {},
 //         success: function (response) {
-//             // let books = response["books"]
-//             console.log(response['books'])
+//             // console.log(response['books'])
 //             $("#books").empty()
+//             let rows = response['books']
 //             for (let i = 0; i < rows.length; i++) {
 //                 let bookTitle = rows[i]['bookTitle']
 //                 let bookUrl = rows[i]['bookUrl']

@@ -1,13 +1,16 @@
 from flask import Flask, render_template, jsonify, request
 from bs4 import BeautifulSoup
+from pymongo import MongoClient
+import certifi
 import requests
 import detail
 import login
 
 app = Flask(__name__)
 
-from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority')
+
+ca = certifi.where()
+client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority',tlsCAFile=ca)
 db = client.bookmaker
 #
 # db.users.insert_one({'name' : 'bob'})
