@@ -20,12 +20,15 @@
                             </ul>
                         </li>
                     </ul>
-                        <button class="btn btn-outline-dark" onclick="window.location.href='/upload'" >
-                            신규 등록
-                        </button>
-                        <button class="btn btn-outline-dark" onclick="window.location.href='/login'" >
+                        {% if urlChk != "False" %}
+                            <button class="btn btn-outline-dark" onclick="window.location.href='/upload'" >
+                                신규 등록
+                            </button>
+                        {% endif %}
+                        <button class="btn btn-outline-dark" onclick="window.location.href='login/login'" >
                             로그인 / 회원가입
                         </button>
+
                 </div>
             </div>
         </nav>

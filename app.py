@@ -1,34 +1,28 @@
 from flask import Flask, render_template
 
+import detail
+import login
+
 app = Flask(__name__)
 
-from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority')
-db = client.bookmaker
+# from pymongo import MongoClient
+# client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority')
+# db = client.bookmaker
+#
+# db.users.insert_one({'name' : 'bob'})
 
-db.users.insert_one({'name' : 'bob'})
+app.register_blueprint(login.login_blueprint)
+app.register_blueprint(detail.detail_blueprint)
 
-@app.route('/')
+
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/upload')
+
+@app.route("/upload")
 def upload():
-    return render_template('upload.html')
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-
-@app.route('/rgstr')
-def rgstr():
-    return render_template('login/rgstr.html')
-
-
-@app.route('/detail')
-def detail():
-    return render_template('detail.html')
+    return render_template("upload.html", urlChk="False")
 
 
 if __name__ == '__main__':

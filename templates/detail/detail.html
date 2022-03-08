@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         {% include 'comm/comm.html' %}
+        <script src="{{ url_for('static', filename='js/detail.js') }}"></script>
     </head>
     <body>
         <!-- Navigation-->
@@ -18,7 +19,6 @@
                         <h1 class="display-5 fw-bolder">Book Title</h1>
                         <div class="fs-5 mb-5">
                             <span>작가 : 아무개</span><br>
-                            <span>$40.00</span>
                         </div>
                         <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
                         <div class="d-flex">
@@ -44,7 +44,7 @@
                                                 <textarea class="form-control ml-1 shadow-none textarea"></textarea>
                                             </div>
                                             <div class="mt-2 text-right">
-                                                <button class="btn btn-outline-dark btn-sm ml-1 shadow-none" type="button">Share</button>
+                                                <button class="btn btn-outline-dark btn-sm ml-1 shadow-none" id="btnShare" onclick="pareShare()" type="button">Share</button>
                                             </div>
                                         </div>
                             </div>
@@ -74,6 +74,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+{#        <script src="js/scripts.js"></script>#}
     </body>
 </html>
