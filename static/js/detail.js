@@ -19,7 +19,6 @@ function paraShare(){
     let userId  = "testUser01";
     let paraContent = "책설명 입니당";
     let writeDate = todayDate();
-    console.log("ASd");
        $.ajax({
             type: 'POST',
             url: '/detail/write_paragraph',
@@ -38,6 +37,29 @@ function paraShare(){
            }
         })
     }
+function paraShow(num){
+
+}
+function paraDelete(num){
+
+     $.ajax({
+            type: 'POST',
+            url: '/detail/delete_paragraph',
+            data: {
+                'paraNum': num
+            },
+            success: function (response) {
+                console.log(response)
+
+            },error: function (error){
+                console.log(error)
+           }
+        })
+
+}
+
+
+
 
 
 

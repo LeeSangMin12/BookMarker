@@ -11301,3 +11301,11 @@ textarea.form-control-lg {
   .text-right{
     float: right;
   }
+  .reply{
+    cursor: pointer;
+    color: #9f9f9f;
+  }
+  .reply small:hover {
+    color: #2d2d2d;
+    cursor: pointer
+}

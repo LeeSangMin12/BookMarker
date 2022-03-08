@@ -31,8 +31,18 @@ def write_paragraph():
             'paraContent': para_content,
             'writeDate': write_date
         }
-        mongo_db.paragraph.insert_one(paragrpah)
+        #mongo_db.paragraph.insert_one(paragrpah)
         print(paragrpah)
     else:
         return jsonify({'msg': '저장실패!'})
     return jsonify({'msg': '저장성공!'})
+
+@detail_blueprint.route("/delete_paragraph", methods=['POST'])
+def delete_paragraph():
+    if request.method == 'POST':
+        para_num = request.form.get('paraNum')
+       #mongo_db.paragraph.delete_one({'paraNum': para_num})
+    else:
+        return False
+    return jsonify({'msg' : '삭제성공!'})
+
