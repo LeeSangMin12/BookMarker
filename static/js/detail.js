@@ -19,7 +19,6 @@ function paraShare(){
     let userId  = "testUser01";
     let paraContent = "책설명 입니당";
     let writeDate = todayDate();
-    console.log("ASd");
        $.ajax({
             type: 'POST',
             url: '/detail/write_paragraph',
