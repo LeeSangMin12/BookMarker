@@ -22,7 +22,7 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload_post():
-    url_receive= request.form['url_give']
+    url_receive = request.form['url_give']
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     data = requests.get(url_receive, headers=headers)
@@ -50,7 +50,7 @@ def upload_post():
 
     return jsonify({'msg':'등록 완료!'})
 
-@app.route("/", methods = ["GET"])
+@app.route("/listBook", methods = ["GET"])
 def book_get():
     book_list = list(db.books.find({},{'_id':False}))
     return jsonify({'books':book_list})
