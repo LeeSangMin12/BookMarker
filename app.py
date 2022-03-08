@@ -1,15 +1,14 @@
 from flask import Flask, render_template
-
+from pymongo import MongoClient
 import detail
 import login
 
 app = Flask(__name__)
 
-# from pymongo import MongoClient
-# client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority')
-# db = client.bookmaker
-#
-# db.users.insert_one({'name' : 'bob'})
+
+client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority')
+mongo_db = client.bookmaker
+
 
 app.register_blueprint(login.login_blueprint)
 app.register_blueprint(detail.detail_blueprint)
