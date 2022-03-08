@@ -11,15 +11,16 @@
         {% include 'comm/header.html' %}
         <!-- Product section-->
         <section class="py-5">
+            <input id="bookNum" type="hidden" value="{{ book.bookNum }}"/>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-4">
-                        <img class="card-img-top mb-5 mb-md-0" style="box-shadow: 5px 5px 5px #606060;" src="https://img.ypbooks.co.kr/upload/img/book/612/101155612.jpg" alt="..." /></div>
+                        <img class="card-img-top mb-5 mb-md-0" style="box-shadow: 5px 5px 5px #606060;" src="{{ book.bookUrl }}" alt="..." /></div>
                     <div class="col-md-6">
-                        <div class="small mb-1">출판사</div>
-                        <h1 class="display-5 fw-bolder">Book Title</h1>
+                        <div class="small mb-1">{{ book.bookPublisher }}</div>
+                        <h1 class="display-5 fw-bolder">{{ book.bookTitle }}</h1>
                         <div class="fs-5 mb-5">
-                            <span>작가 : 아무개</span><br>
+                            <span>{{ book.bookAuthor }}</span><br>
                         </div>
                         <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
                         <div class="d-flex">
@@ -42,7 +43,7 @@
                                         <div class="bg-light p-3">
                                             <div class="d-flex flex-row align-items-start">
                                                 <img class="rounded-circle me-3" src="/static/img/empty_person.png" width="40">
-                                                <textarea class="form-control ml-1 shadow-none textarea"></textarea>
+                                                <textarea class="form-control ml-1 shadow-none textarea" id="paraContent"></textarea>
                                             </div>
                                             <div class="mt-2 text-right">
                                                 <button class="btn btn-outline-dark btn-sm ml-1 shadow-none" id="btnShare" onclick="paraShare()" type="button">Share</button>
@@ -51,24 +52,26 @@
                             </div>
                             <hr>
                             <!-- 댓글 -->
-                            <div class="card p-3">
+                            {% for one in paragraph %}
+                            <div class="card p-3 mb-2">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="user d-flex flex-row align-items-center">
                                         <img src="/static/img/empty_person.png" width="30" class="user-img rounded-circle me-3">
                                         <span>
-                                            <small class="font-weight-bold text-primary">james_olesenn</small>
-                                            <small class="font-weight-bold">Hmm, This poster looks cool</small>
+                                            <small class="font-weight-bold text-primary">{{ one.userId }}</small>
+                                            <small class="font-weight-bold">{{ one.paraContent }}</small>
                                         </span>
                                     </div>
-                                    <small>2 days ago</small>
+                                    <small>{{ one.writeDate }}</small>
                                 </div>
                                 <div class="action d-flex justify-content-between mt-2 align-items-center">
                                     <div class="reply px-5">
-                                        <small onclick="paraDelete(1)">Remove</small>
+                                        <small onclick="paraDelete({{ one.paraNum }})">Remove</small>
                                     </div>
-
                                 </div>
                             </div>
+                            {% endfor %}
+
 
                         </div>
                     </div>

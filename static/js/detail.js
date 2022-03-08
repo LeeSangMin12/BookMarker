@@ -13,24 +13,24 @@ function todayDate(){
     return year + '-' + month + '-' + date;
 
 }
+
 function paraShare(){
-    let bookNum = "b"+1;
-    let paraNum = "p"+1;
-    let userId  = "testUser01";
-    let paraContent = "책설명 입니당";
+    let bookNum = $('#bookNum').val();
+    let userId  = "testUser";
+    let paraContent = $('#paraContent').val();
     let writeDate = todayDate();
        $.ajax({
             type: 'POST',
             url: '/detail/write_paragraph',
             data: {
                 'bookNum': bookNum,
-                'paraNum': paraNum,
                 'userId': userId,
                 'paraContent': paraContent,
                 'writeDate': writeDate
             },
             success: function (response) {
                 console.log(response)
+                window.location.reload();
 
             },error: function (error){
                 console.log(error)
@@ -50,6 +50,7 @@ function paraDelete(num){
             },
             success: function (response) {
                 console.log(response)
+                window.location.reload();
 
             },error: function (error){
                 console.log(error)
@@ -57,6 +58,8 @@ function paraDelete(num){
         })
 
 }
+
+
 
 
 
