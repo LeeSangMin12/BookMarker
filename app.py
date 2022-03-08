@@ -2,6 +2,11 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+from pymongo import MongoClient
+client = MongoClient('mongodb+srv://test:sparta@cluster0.lafvq.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.bookmaker
+
+db.users.insert_one({'name' : 'bob'})
 
 @app.route('/')
 def home():
