@@ -7,6 +7,9 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
 
 @app.route('/login')
 def login():
