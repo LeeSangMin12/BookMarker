@@ -35,13 +35,16 @@ def upload_post():
     bookAuthor = soup.select_one('#book_desc_mid > dd.mT10.prodInfo-dd > a:nth-child(1) > strong').text
     # bookSum = soup.select_one('#tabimage2').contents
     bookSum = 1
+    bookNum = soup.select_one('#productView > div.productArea.product-area > div > dl > dt > div.btnPreview > form > input[type=hidden]:nth-child(2)')['value']
     bookPublisher = soup.select_one('#book_desc_mid > dd.mT10.prodInfo-dd > a:nth-child(2) > strong').text
+
     doc = {
         'bookTitle':bookTitle,
         'bookUrl':bookUrl,
         'bookAuthor':bookAuthor,
         'bookPublisher':bookPublisher,
-        'bookSum': bookSum
+        'bookSum': bookSum,
+        'bookNum': bookNum
     }
     db.books.insert_one(doc)
 
