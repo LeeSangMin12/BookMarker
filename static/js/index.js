@@ -13,6 +13,7 @@ function listing() {
             $("#books").empty()
             let rows = response['books']
             for (let i = 0; i < rows.length; i++) {
+                let bookNum   = rows[i]['bookNum']
                 let bookTitle = rows[i]['bookTitle']
                 let bookUrl = rows[i]['bookUrl']
                 let bookAuthor = rows[i]['bookAuthor']
@@ -32,7 +33,10 @@ function listing() {
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">명언 달기</a></div>
+                                                    <div class="text-center">
+                                                        <a class="btn btn-outline-dark mt-auto" href="/detail/detail/${bookNum}">명언 달기</a>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>`
@@ -41,3 +45,4 @@ function listing() {
         }
     })
 }
+// let book_search = {{book_list}};

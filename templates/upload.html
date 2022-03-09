@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -16,43 +16,10 @@
     <title>BookMarker</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
     <style>
-        .mytitle {
-            width: 100%;
-            height: 250px;
-
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://movie-phinf.pstatic.net/20210715_95/1626338192428gTnJl_JPEG/movie_image.jpg');
-            background-position: center;
-            background-size: cover;
-
-            color: white;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mytitle > button {
-            width: 200px;
-            height: 50px;
-
-            background-color: transparent;
-            color: white;
-
-            border-radius: 50px;
-            border: 1px solid white;
-
-            margin-top: 10px;
-        }
-
-        .mytitle > button:hover {
-            border: 2px solid white;
-        }
-
-        .mycomment {
-            color: gray;
+        .pulsbtn{
+            display: none;
         }
 
         .mycards {
@@ -82,6 +49,9 @@
             margin-right: 10px;
         }
     </style>
+    <script>
+
+    </script>
 </head>
 
 <body>
@@ -93,14 +63,51 @@
     <div class="form-floating mb-3">
         <input id="url" type="email" class="form-control" placeholder="name@example.com">
         <label>도서URL</label>
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent hideBox">
+                <div class="text-center">
+                    <div class="mybtns">
+{#                        <button onclick="getBookInfor()" type="button" class="btn btn-dark">확인 하기</button>#}
+                        </button>
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="mybtns">
-        <button onclick="uploading()" type="button" class="btn btn-dark">추가하기</button>
+{#        <button onclick="uploading()" type="button" class="btn btn-dark">추가하기</button>#}
+        <button onclick="getBookInfor()" type="button" class="btn btn-dark">확인 하기</button>
+                        </button>
         <button type="button" onclick="window.location.href='/'" class="btn btn-outline-dark">뒤로가기</button>
     </div>
 </div>
 <div class="mycards">
     <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+    </div>
+</div>
+<div class="mypost pulsbtn" id="show_box">
+{#        <div  class="checking-part  col mb-5">#}
+{#        <div class="checking-part  card h-100">#}
+{#            <!-- Product image-->#}
+{#            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>#}
+{#            <!-- Product details-->#}
+{#            <div class="card-body p-4">#}
+{#                <div class="text-center">#}
+{#                    <!-- Product name-->#}
+{#                    <h5 class="fw-bolder">책 제목</h5>#}
+{#                    <!-- Product price-->#}
+{#                    작가#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    <div class="form-floating mb-3">
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent hideBox">
+                <div class="text-center">
+
+                </div>
+            </div>
+    </div>
+    <div class="mybtns">
+        <button onclick="uploading()" type="button" class="btn btn-dark">추가하기</button>
     </div>
 </div>
 </body>
