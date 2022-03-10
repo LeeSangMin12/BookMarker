@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'comm/comm.html' %}
+        <script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+    </head>
+    <body>
+        <!-- Navigation-->
+        {% include 'comm/nav.html' %}
+        <!-- Header-->
+        {% include 'comm/header.html' %}
+        <!-- Product section-->
+        <section class="py-5">
+            <input id="bookNum" type="hidden" value="{{ book.bookNum }}"/>
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-4">
+                        <img class="card-img-top mb-5 mb-md-0" style="box-shadow: 5px 5px 5px #606060;" src="{{ book.bookUrl }}" alt="..." /></div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">{{ book.bookPublisher }}</div>
+                        <h1 class="display-5 fw-bolder">{{ book.bookTitle }}</h1>
+                        <div class="fs-5 mb-5">
+                            <span>{{ book.bookAuthor }}</span><br>
+                        </div>
+{#                        <div class="lead">{{ book.bookSum }}</div>#}
+                        <div class="d-flex">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Related items section-->
+        <section class="py-5 bg-light">
+            <div class="container px-4 px-lg-5 mt-5">
+                <h2 class="fw-bolder mb-4">BookMark</h2>
+
+                <div class="container mt-5">
+                    <div class="row d-flex">
+                        <div class="col-md-12">
+                        <!--댓글 작성-->
+                            <div class="p-3">
+                                        <div class="bg-light p-3">
+                                            <div class="d-flex flex-row align-items-start">
+                                                <img class="rounded-circle me-3" src="/static/img/empty_person.png" width="40">
+                                                <textarea class="form-control ml-1 shadow-none textarea" id="paraContent"></textarea>
+                                            </div>
+                                            <div class="mt-2 text-right">
+                                                <button class="btn btn-outline-dark btn-sm ml-1 shadow-none" id="btnShare" onclick="paraShare()" type="button">Share</button>
+                                            </div>
+                                        </div>
+                            </div>
+                            <hr>
+                            <!-- 댓글 -->
+                            {% for one in paragraph %}
+                            <div class="card p-3 mb-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="user d-flex flex-row align-items-center">
+                                        <img src="/static/img/empty_person.png" width="30" class="user-img rounded-circle me-3">
+                                        <span>
+                                            <small class="font-weight-bold text-primary">{{ one.userId }}</small>
+                                            <small class="font-weight-bold">{{ one.paraContent }}</small>
+                                        </span>
+                                    </div>
+                                    <small>{{ one.writeDate }}</small>
+                                </div>
+                                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                                    <div class="reply px-5">
+{#                                        <small onclick="paraDelete({{ one.paraNum }})">Remove</small>#}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Footer-->
+        {% include 'comm/footer.html' %}
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+{#        <script src="js/scripts.js"></script>#}
+    </body>
+</html>

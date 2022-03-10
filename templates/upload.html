@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <title>BookMarker</title>
+    <script src="{{ url_for('static', filename='js/comm/comm.js') }}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css"/>
+        <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+        <!-- jquery cookies-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+        <style>
+        .pulsbtn{
+            display: none;
+        }
+
+        .mycards {
+            margin: 20px auto 0px auto;
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+        }
+        .mypost2 {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+            display: none;
+        }
+
+        .mybtns {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+
+        .mybtns > button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Navigation-->
+{% include 'comm/nav.html' %}
+<!-- Header-->
+{% include 'comm/header.html' %}
+<div class="mypost" id="post-box">
+    <div class="form-floating mb-3">
+        <input id="url" type="email" class="form-control" placeholder="name@example.com">
+        <label>도서URL</label>
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent hideBox">
+                <div class="text-center">
+                    <div class="mybtns">
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="mybtns">
+        <button onclick="getBookInfor()" type="button" class="btn btn-dark">확인 하기</button>
+                        </button>
+        <button type="button" onclick="window.location.href='/'" class="btn btn-outline-dark">뒤로가기</button>
+    </div>
+</div>
+<div class="mycards">
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+    </div>
+</div>
+<div class="mypost2" id="show_box">
+    <div class="form-floating mb-3">
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent hideBox">
+                <div class="text-center">
+
+                </div>
+            </div>
+    </div>
+    <div class="mybtns pulsbtn">
+        <button onclick="uploading()" type="button" class="btn btn-dark">추가하기</button>
+    </div>
+</div>
+</body>
+
+</html>
