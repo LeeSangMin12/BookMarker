@@ -11308,4 +11308,9 @@ textarea.form-control-lg {
   .reply small:hover {
     color: #2d2d2d;
     cursor: pointer
-}
+  }
+  #tokenChk{
+    margin: 0 8px 0 0;
+    color: #656565;
+    font-size: 12px;
+  }

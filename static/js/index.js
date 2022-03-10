@@ -1,6 +1,6 @@
 $(document).ready(function () {
     listing();
-    console.log("123")
+
 });
 
 function listing() {
@@ -9,7 +9,7 @@ function listing() {
         url: '/listBook',
         data: {},
         success: function (response) {
-            console.log(response['books'])
+
             $("#books").empty()
             let rows = response['books']
             for (let i = 0; i < rows.length; i++) {
@@ -18,7 +18,7 @@ function listing() {
                 let bookUrl = rows[i]['bookUrl']
                 let bookAuthor = rows[i]['bookAuthor']
                 let bookPublisher = rows[i]['bookPublisher']
-                let html_temp = ` <div class="col mb-5">
+                let html_temp = ` <div class="col mb-5" id="${bookNum}">
                                             <div class="card h-100">
                                                 <!-- Product image-->
                                                 <img class="card-img-top" src="${bookUrl}" alt="..." />
@@ -42,5 +42,35 @@ function listing() {
                 $("#books").append(html_temp)
             }
         }
+    })
+}
+function find_word(){
+    $('div').removeClass("highlight")
+    // window.location.reload()
+    let hiChk = false
+     $.ajax({
+        type: 'GET',
+        url: '/listBook',
+        data: {},
+        success: function (response) {
+             // console.log(response['books'])
+            let rows = response['books']
+             for (let i = 0; i < rows.length; i++) {
+                 let bookTitle = rows[i]['bookTitle']
+                 let bookNum   = rows[i]['bookNum']
+                   console.log(bookTitle)
+                let book = $("#input-word").val()
+                 console.log(book)
+                  if(bookTitle.includes(book)){
+                      $(`#`+bookNum).addClass("highlight")
+                      $(`#`+bookNum)[0].scrollIntoView()
+                      hiChk = true
+                  }
+             }
+            if (hiChk === false){
+                alert('해당하는 책이 없습니다 추가해주세요!')
+                window.location.href ='/upload'
+            }
+         }
     })
 }

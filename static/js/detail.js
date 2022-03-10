@@ -16,7 +16,7 @@ function todayDate(){
 
 function paraShare(){
     let bookNum = $('#bookNum').val();
-    let userId  = "testUser";
+    let userId  = $.cookie();
     let paraContent = $('#paraContent').val();
     let writeDate = todayDate();
        $.ajax({
@@ -29,8 +29,16 @@ function paraShare(){
                 'writeDate': writeDate
             },
             success: function (response) {
+                if(response['result']=='success'){
+                    window.location.reload();
+                }else{
+                    if(confirm(response['msg']+'\n로그인페이지로 이동하시겠습니까?')){
+                    window.location.href='/login/login';
+                    }else{
+
+                    }
+                }
                 console.log(response)
-                window.location.reload();
 
             },error: function (error){
                 console.log(error)
@@ -49,9 +57,11 @@ function paraDelete(num){
                 'paraNum': num
             },
             success: function (response) {
-                console.log(response)
-                window.location.reload();
-
+                if(response['result']=='success'){
+                    alert(response['msg']);
+                }else{
+                    alert(response['msg']);
+                }
             },error: function (error){
                 console.log(error)
            }
