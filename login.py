@@ -138,6 +138,8 @@ def get_posts():
     posts = list(db.posts.find({}).sort("date", -1).limit(20))
     for post in posts:
       post["_id"] = str(post["_id"])
+      post["count_heart"] = db.likes.count_documents({"post_id": post["_id"], "type": "heart"})
+      post["heart_by_me"] = bool(db.likes.find_one({"post_id": post["_id"], "type": "heart", "username": payload['id']}))
     return jsonify({"result": "success", "msg": "포스팅을 가져왔습니다.", "posts": posts})
   except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
     return redirect(url_for("home"))

@@ -3,7 +3,7 @@
 <head>
 
   <!-- Webpage Title -->
-  <title>Home | SWEETER</title>
+  <title>Home | BookMarker</title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -20,6 +20,43 @@
 
 
   <script>
+      function toggle_like(post_id, type) {
+    console.log(post_id, type)
+    let $a_like = $(`#${post_id} a[aria-label='heart']`)
+    let $i_like = $a_like.find("i")
+    if ($i_like.hasClass("fa-heart")) {
+        $.ajax({
+            type: "POST",
+            url: "/update_like",
+            data: {
+                post_id_give: post_id,
+                type_give: type,
+                action_give: "unlike"
+            },
+            success: function (response) {
+                console.log("unlike")
+                $i_like.addClass("fa-heart-o").removeClass("fa-heart")
+                $a_like.find("span.like-num").text(response["count"])
+            }
+        })
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/update_like",
+            data: {
+                post_id_give: post_id,
+                type_give: type,
+                action_give: "like"
+            },
+            success: function (response) {
+                console.log("like")
+                $i_like.addClass("fa-heart").removeClass("fa-heart-o")
+                $a_like.find("span.like-num").text(response["count"])
+            }
+        })
+
+    }
+}
       function post() {
           let comment = $("#textarea-post").val()
           let today = new Date().toISOString()
@@ -68,6 +105,14 @@
                           let post = posts[i]
                           let time_post = new Date(post["date"])
                           let time_before = time2str(time_post)
+
+                          let class_heart = ""
+                          if (post["heart_by_me"]) {
+                              class_heart = "fa-heart"
+                          } else {
+                              class_heart = "fa-heart-o"
+                          }
+
                           let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
                                             <div class="media-left">
@@ -113,9 +158,9 @@
 <nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="{{ url_for('static', filename='logo.png') }}">
+{#      <img src="{{ url_for('static', filename='logo.png') }}">#}
       <strong class="is-sparta"
-              style="font-family: 'Stylish', sans-serif;font-size: larger;">SWEETER</strong>
+              style="font-family: 'Stylish', sans-serif;font-size: larger;">BookMarker</strong>
     </a>
   </div>
 </nav>
@@ -189,7 +234,7 @@
           <nav class="level is-mobile">
             <div class="level-left">
               <a class="level-item is-sparta" aria-label="heart" onclick="toggle_like('', 'heart')">
-                <span class="icon is-small"><i class="fa fa-heart" aria-hidden="true"></i></span>&nbsp;<span
+                <span class="icon is-small"><i class="fa ${class_heart}" aria-hidden="true"></i></span>&nbsp;<span
                   class="like-num">2.7k</span>
               </a>
             </div>
